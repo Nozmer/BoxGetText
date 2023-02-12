@@ -1,7 +1,15 @@
-import argparse
-import configparser
-import pytesseract
-from termcolor import colored
+#!/usr/bin/python
+
+try:
+    import argparse
+    import configparser
+    import pytesseract
+    from termcolor import colored
+except ImportError:
+    print("Dependent packages not found")
+    print("Run pip3 install -r requirements.txt")
+    exit()
+
 import os
 import time
 
@@ -14,7 +22,7 @@ def print_scan(name_file):
     os.system("xdotool windowminimize $(xdotool getactivewindow)")
     time.sleep(0.5)
 
-    # check folder
+    # check folder if not exist
     if not os.path.exists("data"):
         os.mkdir("data")
 
